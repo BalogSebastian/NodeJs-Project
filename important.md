@@ -18,6 +18,26 @@ On ReadFiles etc {
     if (errr) throw errr;
     console.log(dataa.toString())
 })
+}
+
+*If we have larger larger files sometimes is good to not grab all of the data once 
+it could be too much just like moving a large pile of sand bucket by bucket or ...
+
+
+If we write this => {
+
+
+    const fs = require('fs');
+
+const rs =fs.createReadStream('./files/lorem.txt', { encoding: 'utf8'}); // readble string
+
+//writeable string
+const  ws = fs.createWriteStream('./files/new-lorem.txt');
+
+rs.on('data',(dataChunk) => {
+    ws.write(dataChunk);
+})
 
 
 }
+=> then we will get a new folder like lorem.txt but new-lorem.txt but just with the same content.
