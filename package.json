@@ -1,0 +1,27 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index2.js",
+  "scripts": {
+    "start": "node index2",
+    "dev": "nodemon index2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://BalogSebastian@github.com/BalogSebastian/NodeJs-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BalogSebastian/NodeJs-Project/issues"
+  },
+  "homepage": "https://github.com/BalogSebastian/NodeJs-Project#readme",
+  "dependencies": {
+    "date-fns": "^2.29.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
