@@ -2,3 +2,6 @@
 20221201	10:55:48	Log event emmited for the second time!
 20221201	10:57:11	Log event emmited for the second time!
 20221201	11:44:58	Log event emmited for the second time!
+20221201	11:46:44	Log event emmited for the second time!
+20221201	11:50:07	Log event emmited for the second time!
+20221201	11:50:44	Log event emmited for the second time!

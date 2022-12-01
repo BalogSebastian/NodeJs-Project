@@ -6,7 +6,7 @@ const fs2Promises = require('fs').promises;
 
 const path2 = require('path');
 const path = require('path');
-const logEvents = require('./logEvents');
+const logEvents = require('../logEvents');
 
 const logEventsTwo = async ( message ) => {
     const dateTime2 = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;

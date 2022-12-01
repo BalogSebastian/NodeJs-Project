@@ -2,10 +2,10 @@
   "name": "nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index2.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index3",
-    "dev": "nodemon index3"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
