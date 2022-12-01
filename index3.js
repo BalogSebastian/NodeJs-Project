@@ -10,10 +10,6 @@ const { set } = require('date-fns');
 class MyEmitter extends EventEmitter {};
 class MyEmitter2 extends EventEmitter2 {};
 
-
-
-
-
 // initialize object
 
 const myEmitter = new MyEmitter();
