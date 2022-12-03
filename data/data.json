@@ -1,3 +1,10 @@
-{
-    "Sebi" : "Fanni szeretlek"
-}
+[
+    {
+        "firstname": "Sebastian",
+        "lastname": "Balog"
+    },
+    {
+        "firstname": "Sebastian Mate",
+        "lastname": "Balog"
+    }
+]

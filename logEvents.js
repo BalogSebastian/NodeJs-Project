@@ -1,29 +1,31 @@
-const { format } = require('date-fns');
-const { v4: uuid } = require('uuid'); 
-
 const fs = require('fs');
+const { v4: uuid } = require('uuid');
 const fsPromises = require('fs').promises;
 const path = require('path');
+const { format } = require('date-fns');
 
-const logEvents = async ( message, logName) => {
-    const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;
-    const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
+const logEvents = async ( message ) => {
+    const dateTime =
+        `${format(new Date(), 'yyyy/MM/dd\tHH: mm: ss')}`;
+    const logItem = 
+        `${dateTime}\t${uuid()}\t${message}`;
     console.log(logItem);
     try {
-        if (!fs.existsSync(path.join(__dirname,'logs'))) {
-             await fsPromises.mkdir(path.join(__dirname, 'logs'));
+        if ( !fs.existsSync(path.join(__dirname, 'logs'))) {
+            await fsPromises.mkdir(path.join(__dirname, 'logs'));
         }
-        // tesing 
-        await fsPromises.appendFile(path.join(__dirname,'logs',logName), logItem);
-    } catch (err) {
-        console.log(err);
-        
-    }   
+         //testing
+        await fsPromises.appendFile(path.join(__dirname, 'logs', 'newLogslogEvents'), logItem);
+    } catch (err2) {
+        const errorItem = err2;
+        if (!fs.existsSync(path.join(__dirname,'errorLogs'))) {
+            await fsPromises.mkdir(path.join(__dirname,
+            'errorLogs'));
+        }
+        //testing
+        console.log(errorItem);
+        await fsPromises.appendFile(path.join(__dirname,'errorLogs', 'newLogsErrorLogs'),errorItem);
+    }
 }
 
 module.exports = logEvents;
-
-
-// console.log(format(new Date(), 'yyyyMMdd\tHH:mm:ss'))
-
-// console.log(uuid());
