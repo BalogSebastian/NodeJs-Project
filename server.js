@@ -122,42 +122,6 @@ const server = http.createServer((req, res) => {
     }
 
 
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // this will log => / GET
                     //this will two methtods to, to build what our
                     //  server will does today
