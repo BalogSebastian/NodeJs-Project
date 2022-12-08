@@ -2,8 +2,7 @@ const http = require('http');
 const path = require('path');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
-
-const logEvents = require('./WebServerBuild/logEventsExample');
+const logEvents = require('./logEvents');
 const EventEmitter = require('events');
 class Emitter extends EventEmitter { };
 // initialize object 
@@ -13,7 +12,7 @@ const PORT = process.env.PORT || 3500;
 
 const serveFile = async (filePath, contentType, response) => {
     try {
-        const rawData = await fsPromises.readFil(
+        const rawData = await fsPromises.readFile(
             filePath,
             !contentType.includes('image') ? 'utf8' : ''
         );
@@ -67,7 +66,7 @@ const server = http.createServer((req, res) => {
 
     let filePath =
         contentType === 'text/html' && req.url === '/'
-            ? path.join(__dirname, 'views', 'index.html')
+            ? path.join(__dirname, 'views', 'new-page.html')
             : contentType === 'text/html' && req.url.slice(-1) === '/'
                 ? path.join(__dirname, 'views', req.url, 'index.html')
                 : contentType === 'text/html'
