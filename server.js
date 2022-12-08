@@ -5,11 +5,11 @@ const fsPromises = require('fs').promises;
 const logEvents = require('./logEvents');
 const EventEmiteer = require('events');
 const { set } = require('date-fns');
-const { fi } = require('date-fns/locale');
 const { response } = require('express');
 
 class Emitter extends EventEmiteer{};
-
+const myEmitter = new Emitter();
+myEmitter.on('log', (msg, fileName ) => logEvents(msg, fileName));
 const PORT = process.env.PORT || 3500;
 
 
@@ -21,7 +21,10 @@ const serveFile = async(filePath, contentType, response ) => {
              );
         const data = contentType === 'application/json'
             ? JSON.parse(rawData) : rawData
-        response.writeHead(200, {'Content-Type': contentType});
+        response.writeHead(
+            filePath.includes('404.html') ? 404 : 200, 
+            {'Content-Type': contentType}
+            );
         response.end(
             contentType === 'application/json' 
                 ? JSON.stringify(data)
@@ -29,6 +32,7 @@ const serveFile = async(filePath, contentType, response ) => {
         );
     } catch (err) {
         console.log(err);
+        myEmitter.emit('log',`${err.name}: ${err.message}`,'errLog.txt' );
         response.statusCode = 500;
         res.end();
     }
@@ -38,6 +42,7 @@ const serveFile = async(filePath, contentType, response ) => {
 const server = http.createServer((req,res) => {
     
     console.log(req.url, req.method);
+    myEmitter.emit('log',`${req.url}\t${req.method}\n`,'reqLog.txt' );
     
     const extension = path.extname(req.url);
 
@@ -139,30 +144,9 @@ const server = http.createServer((req,res) => {
     //         break;
     //     }
 });
-
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // //initialize object
 // const myEmitter = new Emitter();
 
